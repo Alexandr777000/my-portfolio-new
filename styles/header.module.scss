@@ -12,6 +12,10 @@
     padding: 24px 0;
   }
 
+  @media all and (max-width: 485px) {
+    padding-top: 20px;
+  }
+
   &__container {
     display: flex;
     position: relative;
@@ -25,9 +29,11 @@
     @media all and (max-width: 1440px) {
       width: 70%;
     }
+
     @media all and (max-width: 1080px) {
       width: 75.4%;
     }
+
     @media all and (max-width: 800px) {
       width: 83%;
     }
@@ -43,7 +49,7 @@
         transition: opacity .3s ease-in-out;
 
         &__link {
-          font-family: 'Lato', sans-serif;
+          font-family: 'Lato';
           font-weight: 700;
           font-size: 20px;
           color: #F2F2F2;
@@ -69,7 +75,8 @@
     }
   }
 }
-.list_reset{
+
+.list_reset {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -85,6 +92,10 @@
   border: none;
   margin: 0;
   padding: 0;
+
+  @media all and (max-width: 485px) {
+    height: 40px;
+  }
 }
 
 .burger_menu span {
@@ -97,7 +108,6 @@
   transition: .3s cubic-bezier(.8, .5, .2, 1.4);
 }
 
-// обратимся к первому спану бургера
 .burger_menu span:nth-child(1) {
   top: 0;
   left: 0;
@@ -106,8 +116,11 @@
 .burger_menu span:nth-child(2) {
   top: 13px;
   left: 0;
-  // когда бургер откроется средняя полоса исчезает  а верхний и нижний превратятся в крестик
   opacity: 1;
+
+  @media all and (max-width: 485px) {
+    top: 17px;
+  }
 }
 
 .burger_menu span:nth-child(3) {
@@ -128,4 +141,3 @@
   transform: rotate(-45deg);
   top: 13px;
 }
-

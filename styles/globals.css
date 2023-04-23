@@ -47,6 +47,11 @@ a {
         padding: 0 25px;
     }
 }
+@media all and (max-width: 485px) {
+    .container, .sub-container {
+        padding: 0 16px;
+    }
+}
 
 @font-face {
     font-display: swap;
