@@ -8,6 +8,10 @@
   background: rgba(21, 36, 72, 0.2);
   backdrop-filter: blur(125px);
 
+  @media all and (max-width: 800px) {
+    padding: 24px 0;
+  }
+
   &__container {
     display: flex;
     position: relative;
@@ -17,6 +21,16 @@
 
   &__nav {
     width: 71%;
+
+    @media all and (max-width: 1440px) {
+      width: 70%;
+    }
+    @media all and (max-width: 1080px) {
+      width: 75.4%;
+    }
+    @media all and (max-width: 800px) {
+      width: 83%;
+    }
 
     &__list {
       list-style-type: none;
@@ -33,11 +47,18 @@
           font-weight: 700;
           font-size: 20px;
           color: #F2F2F2;
+
+          @media all and (max-width: 1080px) {
+            font-size: 18px;
+          }
         }
 
         &:not(:last-child) {
           margin-right: 48px;
 
+          @media all and (max-width: 1080px) {
+            margin-right: 40px;
+          }
         }
       }
 
