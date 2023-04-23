@@ -72,7 +72,7 @@
   max-width: 30ch;
 }
 
-.center {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
