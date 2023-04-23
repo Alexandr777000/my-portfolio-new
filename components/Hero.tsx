@@ -1,13 +1,12 @@
-import React, {MutableRefObject, useEffect, useRef} from "react";
+import {MutableRefObject, useEffect, useRef} from "react";
 import {Link} from "react-scroll";
-import {useMediaQuery} from "@/hooks";
-
-import styles from "@/styles/hero.module.scss";
 import {gsap} from "gsap";
+import styles from "@/styles/hero.module.scss";
+import {useMediaQuery} from "@/hooks";
 
 const Hero = () => {
     const isMobile800 = useMediaQuery(800);
-    // const isMobile485 = useMediaQuery(485);
+    const isMobile485 = useMediaQuery(485);
     const heroTitle = useRef() as MutableRefObject<HTMLHeadingElement>;
 
     useEffect(() => {
@@ -15,47 +14,50 @@ const Hero = () => {
             paused: true,
             duration: 20,
             repeat: -1,
-            '--hue': 360,
-        })
+            "--hue": 360,
+        });
 
         const doRandom = () => {
             gsap.timeline()
                 .to(heroTitle.current, {
                     duration: 0.1,
-                    opacity: function(){ return gsap.utils.random(.90, .95) },
-                    delay: function(){ return gsap.utils.random(.1, 2) },
+                    opacity: function () {
+                        return gsap.utils.random(.90, .95);
+                    },
+                    delay: function () {
+                        return gsap.utils.random(.1, 2);
+                    },
                 }).to(heroTitle.current, {
                 duration: 0.1,
                 opacity: 1,
-                onComplete: function(){
-                    doRandom()
+                onComplete: function () {
+                    doRandom();
                 }
-            })
-        }
+            });
+        };
 
         const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-        if (! mediaQuery || ! mediaQuery.matches) {
+        if (!mediaQuery || !mediaQuery.matches) {
             colors.play();
             doRandom();
         }
 
     }, []);
-
     return (
         <section
             className={styles.hero}
-            style={{backgroundImage: "url('images/hero-bg.png')"}}
-
+            style={{backgroundImage: isMobile485 ? "" : `url('/images/hero-bg${isMobile800 ? "-mobile" : ""}.png')`}}
         >
             <div className="sub-container">
-                <div className={styles.hero__inner}>
+                <div>
                     <h1 className={styles.hero__title} ref={heroTitle}>Web
                         development</h1>
-                    <p className={styles.hero__description}>
-                        Вы работаете над чем-то великим? Я с удовольствием помогу вам в
-                        этом! Напишите мне письмо и мы начнем проект прямо сейчас!
-                    </p>
+                    <div className={styles.hero__description}>
+                        <p>Вы работаете над чем-то великим?</p>
+                        <p>Я с удовольствием помогу вам в этом! Напишите мне письмо и мы
+                            начнем проект прямо сейчас!</p>
+                    </div>
                     <Link
                         to="contact"
                         spy={true}
@@ -66,14 +68,14 @@ const Hero = () => {
                     >
                         Связаться с разработчиком
                     </Link>
-                    {!isMobile800 &&
-                        <Link
-                            to="about"
-                            spy={true}
-                            smooth={true}
-                            offset={30}
-                            duration={500}
-                            className={styles.hero__arrow}/>}
+                    {!isMobile800 && <Link
+                        to="about"
+                        spy={true}
+                        smooth={true}
+                        offset={30}
+                        duration={500}
+                        className={styles.hero__arrow}
+                    />}
                 </div>
             </div>
         </section>
